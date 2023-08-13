@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Vampire</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <style>
+    body {
+      font-family: "Lato", sans-serif
+    }
+
+    .mainMenuSlides {
+      display: none
+    }
+
+    .factionsSlide {
+      display: none;
+    }
+
+    /* Scrollbar */
+    /* width */
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: #dedede;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: #f11;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #800505;
+    }
+
+    /* Change text selection colour */
+    ::selection {
+      background-color: #f11;
+      /* Change this to the desired background color */
+      color: #0d0d0d;
+      /* Change this to the desired text color */
+    }
+
+    /* Content selection can be disabled */
+    img.no-select,
+    h2.no-select,
+    p.no-select {
+      user-select: none;
+    }
+
+    /* Leave space from right side to seperate the faction description text from right arrow */
+    .factions-description-display {
+      position: absolute;
+      top: 50%;
+      right: 15%;
+      transform: translate(0%, -50%);
+      -ms-transform: translate(0%, -50%)
+    }
+
+    .factions-description-neon-display {
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      transform: translate(0%, -50%);
+      -ms-transform: translate(0%, -50%)
+    }
+
+    /* Display positions for the city content */
+    .city-display-topleft {
+      position: absolute;
+      left: 5%;
+      top: 25%
+    }
+
+    .city-display-right {
+      position: absolute;
+      left: 55%;
+      top: 50%
+    }
+
+    .city-display-bottomleft {
+      position: absolute;
+      left: 5%;
+      top: 75%
+    }
+
+    /* Read more for long text */
+    .read-more-toggle {
+      cursor: pointer
+    }
+
+    .read-more-content {
+      overflow: hidden;
+      max-height: 100px;
+      transition: max-height 0.3s ease-in-out
+    }
+
+    .read-more-expanded {
+      max-height: 300px;
+      overflow-y: scroll
+    }
+
+    /* -------------------------------------------LOW RESOLUTION------------------------------------------- */
+    @media (max-width:768px) {
+
+      /* City display repositioning */
+      .city-display-topleft {
+        position: absolute;
+        left: 5%;
+        top: 30%
+      }
+
+      /* Read more for small view */
+      .read-more-toggle {
+        cursor: pointer
+      }
+
+      .read-more-content {
+        overflow: hidden;
+        max-height: 40px;
+        transition: max-height 0.3s ease-in-out
+      }
+
+      .read-more-expanded {
+        max-height: 40px;
+        overflow-y: scroll
+      }
+
+    }
+
+    /* Closing bracelet of the @media */
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <div class="w3-top">
+    <div class="w3-bar w3-black w3-card">
+      <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)"
+        onclick="navbarFunctionality()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      <a href="#" class="w3-bar-item w3-button w3-padding-large">ANA SAYFA</a>
+      <a href="#aboutgame" class="w3-bar-item w3-button w3-padding-large w3-hide-small">OYUN HAKKINDA</a>
+      <!-- Navbar LOGO -->
+      <div id="navbarLogo" class="w3-bar-item w3-display-middle" style="text-align: center;">
+        <img class="no-select" src="./images/vampire_logo.png" width="30%" height="30%">
+        <!-- <img class="no-select" src="./images/navbar_logo.png" width="30" height="30"> -->
+      </div>
+
+      <a href="#city" class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-right">ŞEHİR</a>
+      <a href="#factions" class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-right">FRAKSİYONLAR</a>
+    </div>
+  </div>
+
+  <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+  <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+    <a href="#aboutgame" class="w3-bar-item w3-button w3-padding-large" onclick="navbarFunctionality()">Oyun Hakkında</a>
+    <a href="#city" class="w3-bar-item w3-button w3-padding-large" onclick="navbarFunctionality()">Şehir</a>
+    <a href="#factions" class="w3-bar-item w3-button w3-padding-large" onclick="navbarFunctionality()">Fraksiyonlar</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large" onclick="navbarFunctionality()">Forum</a>
+    <a href="./apply.html" class="w3-bar-item w3-button w3-padding-large" onclick="navbarFunctionality()">Karakter Başvurusu</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large" onclick="navbarFunctionality()">Destek</a>
+  </div>
+
+  <!-- Page content -->
+  <div class="w3-content" style="max-width:2000px;margin-top:46px">
+
+    <!-- Automatic Slideshow Images -->
+    <div class="mainMenuSlides w3-display-container w3-center">
+      <img class="no-select" src="./images/background-Image-01B.jpg" style="width:100%">
+      <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32">
+        <!-- Buttons -->
+        <div class="w3-display-container w3-container w3-text-white w3-padding-32 w3-hide-small">
+          <a href="#" class="w3-button w3-center w3-black">Forum</a>
+          <a href="./apply.html" class="w3-button w3-center w3-black">Karakter Başvurusu</a>
+          <a href="#" class="w3-button w3-center w3-black">Destek</a>
+        </div>
+        <!-- Buttons end -->
+
+        <h2 class="no-select w3-wide w3-center">Los Santos</h2>
+        <p class="no-select w3-text-white"><b>We had the best time feeding at Venice Beach!</b></p>
+      </div>
+    </div>
+    <div class="mainMenuSlides w3-display-container w3-center">
+      <img class="no-select" src="./images/background-Image-02B.jpg" style="width:100%">
+      <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32">
+        <!-- Buttons -->
+        <div class="w3-display-container w3-container w3-text-white w3-padding-32 w3-hide-small">
+          <a href="#" class="w3-button w3-center w3-black">Forum</a>
+          <a href="./apply.html" class="w3-button w3-center w3-black">Karakter Başvurusu</a>
+          <a href="#" class="w3-button w3-center w3-black">Destek</a>
+        </div>
+        <!-- Buttons end -->
+
+        <h2 class="no-select w3-wide w3-center">San Fierro</h2>
+        <p class="no-select w3-text-white"><b>The atmosphere in San Fierro is bloody.</b></p>
+      </div>
+    </div>
+    <div class="mainMenuSlides w3-display-container w3-center">
+      <img class="no-select" src="./images/background-Image-03B.jpg" style="width:100%">
+      <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32">
+        <!-- Buttons -->
+        <div class="w3-display-container w3-container w3-text-white w3-padding-32 w3-hide-small">
+          <a href="#" class="w3-button w3-center w3-black">Forum</a>
+          <a href="./apply.html" class="w3-button w3-center w3-black">Karakter Başvurusu</a>
+          <a href="#" class="w3-button w3-center w3-black">Destek</a>
+        </div>
+        <!-- Buttons end -->
+
+        <h2 class="no-select w3-wide w3-center">Las Venturas</h2>
+        <p class="no-select w3-text-white"><b>Thank you, Las Venturas - A night we won't forget.</b></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- The About Game Section -->
+  <div class="w3-display-container w3-black w3-padding-64" id="aboutgame">
+    <img class="no-select" src="./images/background-about-the-game.jpg" class="w3-image w3-greyscale-min"
+      style="width:100%">
+    <div class="w3-display-right w3-container w3-text-white w3-padding-32" style="max-width:40%">
+      <h2 class="no-select w3-wide">Oyun Hakkında</h2>
+      <p class="no-select w3-opacity"><i>We love blood</i></p>
+
+      <p class="no-select read-more-content">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        Quo, eligendi suscipit aliquid veritatis harum fugiat molestiae
+        neque eum exercitationem explicabo, sint natus quos debitis et
+        odit fuga enim pariatur quis! Dolores aliquid exercitationem fugiat
+        repellendus ullam sapiente, a expedita facere, distinctio veritatis,
+        aliquam reprehenderit praesentium recusandae atque quo dolorum animi natus vel.
+        Quo, eligendi suscipit aliquid veritatis harum fugiat molestiae
+        neque eum exercitationem explicabo, sint natus quos debitis et
+        odit fuga enim pariatur quis! Dolores aliquid exercitationem fugiat
+        repellendus ullam sapiente, a expedita facere, distinctio veritatis,
+        aliquam reprehenderit praesentium recusandae atque quo dolorum animi natus vel.
+        Quo, eligendi suscipit aliquid veritatis harum fugiat molestiae
+        neque eum exercitationem explicabo, sint natus quos debitis et
+        odit fuga enim pariatur quis! Dolores aliquid exercitationem fugiat
+        repellendus ullam sapiente, a expedita facere, distinctio veritatis,
+        aliquam reprehenderit praesentium recusandae atque quo dolorum animi natus vel.
+        Quo, eligendi suscipit aliquid veritatis harum fugiat molestiae
+        neque eum exercitationem explicabo, sint natus quos debitis et
+        odit fuga enim pariatur quis! Dolores aliquid exercitationem fugiat
+        repellendus ullam sapiente, a expedita facere, distinctio veritatis,
+        aliquam reprehenderit praesentium recusandae atque quo dolorum animi natus vel.
+        Quo, eligendi suscipit aliquid veritatis harum fugiat molestiae
+        neque eum exercitationem explicabo, sint natus quos debitis et
+        odit fuga enim pariatur quis! Dolores aliquid exercitationem fugiat
+        repellendus ullam sapiente, a expedita facere, distinctio veritatis,
+        aliquam reprehenderit praesentium recusandae atque quo dolorum animi natus vel.
+        Quo, eligendi suscipit aliquid veritatis harum fugiat molestiae
+        neque eum exercitationem explicabo, sint natus quos debitis et
+        odit fuga enim pariatur quis! Dolores aliquid exercitationem fugiat
+        repellendus ullam sapiente, a expedita facere, distinctio veritatis,
+        aliquam reprehenderit praesentium recusandae atque quo dolorum animi natus vel.
+      </p>
+      <button class="read-more-toggle w3-button w3-padding-large w3-right">Daha fazlasını gör</button>
+    </div>
+  </div>
+
+  <!-- The Factions Section -->
+  <div class="w3-display-container w3-padding-64 w3-black" id="factions">
+    <h2 class="w3-wide w3-center">FRAKSİYONLAR</h2>
+    <img class="no-select" src="./images/seperator.png" style="display:block; margin:0 auto; width:10%;">
+
+    <!-- Slideshow -->
+    <div class="w3-display-container factionsSlide">
+      <video autoplay loop muted style="width:100%;">
+        <source src="./images/camarilla-paint.mp4" type="video/mp4">
+      </video>
+
+      <div class="factions-description-display w3-large w3-container w3-padding-16" style="width:40%">
+        <h2>CAMARILLA</h2>
+        <p class="no-select read-more-content">
+          Camarilla, vampir tarikatları arasında en organize olanıdır. Geleneklere
+          önem veren ve ölümlü halkı perde arkasından kontrol eden seçkin bir kulüptür.
+          <br><br>
+          Genel olarak, Camarilla'nın düzeni korumaya yönelik yaklaşımının çoğu Gelenekleri hayata geçirmeyi
+          içerir; bu da diğer
+          şeylerin yanı sıra feodal bir alan sistemini ve efendilerin çocuklarının davranışlarından sorumlu
+          olmalarını desteklemek
+          anlamına gelir.
+          <br><br>
+          Bu son fikir genellikle daha da ileri götürülerek efendinin çocuk üzerinde otoritesi olduğu ve yaşlı
+          vampirlerin genç
+          vampirlere kıyasla özünde saygıyı daha çok hak ettiği ve liderliğe daha uygun olduğu anlamına gelir.
+          <br><br>
+          Bu pozisyonun değeri ne olursa olsun, genç Kindred'lar arasında büyük bir kızgınlık yaratma eğilimi
+          vardır ve geçmişte
+          pek çok kişiyi Anarşistlere sürüklemiştir. Yaşlı vampirler doğal olarak yüzyıllar boyunca
+          ustalaştıkları sosyal düzeni
+          destekler, Camarilla'nın politikalarının çoğu, uzun zaman önce ölümlü dünyayla bağlarını koparmış
+          olan Kindred'lerin
+          faaliyetlerini kolaylaştırmak için tasarlanmıştır.
+        </p>
+        <button class="read-more-toggle w3-button w3-padding-large w3-right">Daha fazlasını gör</button>
+      </div>
+    </div>
+
+    <div class="w3-display-container factionsSlide">
+      <video autoplay loop muted style="width:100%;">
+        <source src="./images/anarch-neon-wall-2.mp4" type="video/mp4">
+      </video>
+      <div class="factions-description-neon-display w3-large w3-container w3-padding-16" style="width:40%">
+        <h2>SABBAT</h2>
+        <p class="no-select read-more-content">
+          Sabbat, gelenekleri reddeden Kainitlerden oluşan bir örgüttür. Camarilla'nın aksine Sabbat,
+          Antediluvianların ve Caine'in varlığına inanır.
+          <br><br>
+          Sabbat üyelerini tanımlamanın birçok yolu bulunmaktadır. Tarikatın resmi rengi olan mor, ters
+          çevrilmiş bir ankh sembolü
+          ve teorik olarak bir üyenin diğerini tanımasını sağlayan yüzlerce olmasa da düzinelerce özel işaret,
+          şifre ve jest yer
+          alır. Pratikte, Sabbat üyelerinin çoğu bu işaretlerin birkaçından fazlasını tanıyabilir - genellikle
+          ritüeller veya
+          diğer tarikat toplantılarında birbirlerini yüzlerinden tanımayı öğrenirler.
+          <br><br>
+          Genç Sabbat üyeleri arasında, bir yerde haç sembolü taşımak, kolye, küpe hatta dövme şeklinde,
+          oldukça etkileyici bir
+          görüntüdür. Kurtuluşun sembollerini taşımanın ironisi, bu lanetlenmiş vampirler için büyük bir
+          eğlence kaynağıdır,
+          özellikle de sembolü taşıyan kişi bir "rahip" sürüsünden ise.
+        </p>
+        <button class="read-more-toggle w3-button w3-padding-large w3-right">Daha fazlasını gör</button>
+      </div>
+    </div>
+
+    <div class="w3-display-container factionsSlide">
+      <img class="no-select" src="./images/factions_background.jpg" style="width:100%">
+      <div class="factions-description-display w3-large w3-container w3-padding-16" style="width:40%">
+        <h2>FACTION 1</h2>
+        <p class="no-select read-more-content">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis optio id deserunt? Dignissimos
+          voluptatem
+          doloribus quae. Id sed aperiam atque magni corrupti, doloribus, sunt vel exercitationem illo iure
+          fugit
+          pariatur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi doloribus assumenda, quod
+          non eum
+          ratione quam possimus ab quo consectetur cupiditate minima dolorum odit odio qui expedita in porro.
+          Iure.
+        </p>
+        <button class="read-more-toggle w3-button w3-padding-large w3-right">Daha fazlasını gör</button>
+      </div>
+    </div>
+
+    <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
+    <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
+  </div>
+
+  <!-- The City Section -->
+  <div class="w3-display-container w3-black w3-padding-64" id="city">
+    <h2 class="w3-wide w3-center">ŞEHİR</h2>
+    <img class="no-select" src="./images/seperator.png" style="display:block; margin:0 auto; width:10%;">
+    <img class="no-select" src="./images/background-image-city.jpg" class="w3-image w3-greyscale-min"
+      style="width:100%">
+    <div class="city-display-topleft" style="width:40%">
+      <p class="no-select" style="font-size: 1vw; text-align:justify ">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        Dolores dolor cumque, vitae ratione esse ipsam, distinctio facilis
+        excepturi, soluta doloribus fugit voluptatem numquam quasi corrupti?
+        Ullam mollitia perferendis vero repellendus!
+        Dolores dolor cumque, vitae ratione esse ipsam, distinctio facilis
+        excepturi, soluta doloribus fugit voluptatem numquam quasi corrupti?
+        Ullam mollitia perferendis vero repellendus!
+      </p>
+    </div>
+
+    <div class="city-display-right" style="width:40%">
+      <p class="no-select" style="font-size: 1vw; text-align:justify">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        Hic nostrum quos cumque, vitae incidunt mollitia laudantium
+        quo accusantium suscipit dicta maiores quam ea corporis, vel,
+        voluptas consectetur necessitatibus!
+        Dolores dolor cumque, vitae ratione esse ipsam, distinctio facilis
+        excepturi, soluta doloribus fugit voluptatem numquam quasi corrupti?
+        Ullam mollitia perferendis vero repellendus!
+      </p>
+    </div>
+
+    <div class="city-display-bottomleft" style="width:40%">
+      <p class="no-select" style="font-size: 1vw; text-align:justify">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+        Illo totam nobis enim, similique, eaque ea quas mollitia esse quis asperiores
+        nihil, sequi odit velit. Odit facere magni fuga beatae. Esse.
+        Dolores dolor cumque, vitae ratione esse ipsam, distinctio facilis
+        excepturi, soluta doloribus fugit voluptatem numquam quasi corrupti?
+        Ullam mollitia perferendis vero repellendus!
+      </p>
+    </div>
+  </div>
+
+  <!-- End Page Content -->
+  </div>
+
+  <!-- Image of end page -->
+  <img class="no-select" src="./images/background-Image-04B.jpg" class="w3-image w3-greyscale-min" style="width:100%">
+
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-64 w3-center w3-black w3-xlarge">
+    <i class="fab fa-facebook-official w3-hover-opacity"></i>
+    <i class="fab fa-instagram w3-hover-opacity"></i>
+    <i class="fab fa-snapchat w3-hover-opacity"></i>
+    <i class="fab fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fab fa-twitter w3-hover-opacity"></i>
+    <i class="fab fa-linkedin w3-hover-opacity"></i>
+    <i class="fab fa-discord w3-hover-opacity"></i>
+    <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a>
+    </p>
+    <p class="w3-small w3-wide">© 2023 GOAT Team All Rights Reserved</p>
+  </footer>
+
+  <script>
+    // Automatic Slideshow - change image every 4 seconds
+    var myIndex = 0;
+    carousel();
+
+    function carousel() {
+      var i;
+      var x = document.getElementsByClassName("mainMenuSlides");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      myIndex++;
+      if (myIndex > x.length) { myIndex = 1 }
+      x[myIndex - 1].style.display = "block";
+      setTimeout(carousel, 4000);
+    }
+
+    // Used to toggle the menu on small screens when clicking on the menu button
+    function navbarFunctionality() {
+      var x = document.getElementById("navDemo");
+      if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+      } else {
+        x.className = x.className.replace(" w3-show", "");
+      }
+    }
+
+    // Factions slides
+    var slideIndex = 1;
+    showDivs(slideIndex);
+
+    function plusDivs(n) {
+      showDivs(slideIndex += n);
+    }
+
+    function showDivs(n) {
+      var i;
+      var x = document.getElementsByClassName("factionsSlide");
+      if (n > x.length) { slideIndex = 1 }
+      if (n < 1) { slideIndex = x.length }
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      x[slideIndex - 1].style.display = "block";
+    }
+
+  // Read more script
+  document.addEventListener("click", function (event) {
+    var toggleButton = event.target;
+    if (toggleButton.classList.contains("read-more-toggle")) {
+      var content = toggleButton.previousElementSibling; // Assuming the content is the previous element
+      var isExpanded = content.classList.contains("read-more-expanded");
+
+      if (isExpanded) {
+        // Scroll to the top of the content
+        var contentTop = content.getBoundingClientRect().top + window.scrollY;
+        content.scroll({
+          top: 0,
+          behavior: "smooth" // You can change this to "auto" or remove it for instant scrolling
+        });
+      }
+
+      content.classList.toggle("read-more-expanded");
+      toggleButton.textContent = isExpanded ? "Daha fazlasını gör" : "Daha azını gör";
+    }
+  });
+
+  </script>
+
+</body>
+
+</html>
