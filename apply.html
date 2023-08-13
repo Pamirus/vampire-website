@@ -53,6 +53,7 @@
         }
 
         /* Content selection can be disabled */
+        div.no-select,
         img.no-select,
         h2.no-select,
         p.no-select {
@@ -134,29 +135,41 @@
         <img class="no-select" src="./images/seperator.png" style="display:block; margin:0 auto; width:10%;">
 
         <div class="no-select w3-container w3-content w3-padding-16">
-            <p class="no-select" style="display: inline; margin-right: 1%;">Karakter adı:</p> <input type="text" style="margin-right: 5%;" id="name">
-            <p class="no-select" style="display: inline; margin-right: 1%;">Karakter yaşı:</p> <input type="text" style="margin-right: 5%;" id="age">
-            <p class="no-select" style="display: inline; margin-right: 1%;">#:</p> <input type="text" id="#">
+            <p style="display: inline; margin-right: 1%;">Karakter adı:</p><input class="w3-round-large" type="text" style="margin-right: 10%;" id="name">
+            <p style="display: inline; margin-right: 1%;">Karakter yaşı:</p><input class="w3-round-large" type="text" style="margin-right: 10%; width: 5%;" id="age">
+            <p style="display: inline; margin-right: 1%;">Karakter cinsiyeti:</p>
+            <select class="w3-dropdown-hover w3-round-large" id="gender">
+                <div class="w3-dropdown-content w3-bar-block w3-border">
+                    <option value="male" class="w3-bar-item w3-button">Erkek</a>
+                    <option value="female" class="w3-bar-item w3-button">Kadın</a>
+                    <option value="other" class="w3-bar-item w3-button">Diğer</a>
+                </div>
+            </select>
         </div>
 
         <!-- Factions section -->
         <div class="w3-display-container w3-black" style="background-image: url(./images/factions_background.jpg); text-align: center;">
 
             <!-- Faction 1 -->
-            <button class="w3-container w3-content w3-black w3-padding-16 w3-hover-opacity">
-                <h2 class="no-select">Faction 1</h2>
-                <p class="no-select" style="text-align: justify;">
+            <div class="no-select w3-container w3-content w3-black w3-padding-16">
+                <h2>Faction 1</h2>
+                <p style="text-align: justify;">
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis quos eligendi error expedita. Sunt,
                     recusandae ab? Dicta reiciendis minima a necessitatibus cumque, commodi eum accusamus itaque, quia ducimus
                     facere totam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, repudiandae, vitae nemo laborum
                     tenetur voluptate dolor id nihil, ipsum sit magni excepturi laboriosam ea minima dolorem possimus repellat iure
-                    totam?
+                    totam? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque beatae optio, iusto nesciunt amet ex temporibus vero quisquam sit nam soluta est incidunt, corrupti unde explicabo totam commodi debitis aperiam!
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit fugiat dignissimos corrupti consequatur a, nesciunt pariatur tenetur quam ipsam sunt nam dicta, commodi odit nisi sequi. Nesciunt minima ipsum quam.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus aspernatur modi illum, quisquam quaerat quam! Neque, eligendi repellat, nostrum placeat eaque unde deserunt iure ullam maxime dolorum earum? Rem, soluta.
                 </p>
-                <p class="no-select" style="text-align: right">SEÇMEK İÇİN TIKLA</p>
-            </button>
+
+                <div style="text-align: right;">
+                    <input type="button" value="SEÇMEK İÇİN BURAYA TIKLA" class="w3-button" id="faction1">
+                </div>
+            </div>
 
             <!-- Faction 2 -->
-            <button class="w3-container w3-content w3-black w3-padding-16 w3-hover-opacity">
+            <div class="w3-container w3-content w3-black w3-padding-16">
                 <h2 class="no-select">Faction 2</h2>
                 <p class="no-select" style="text-align: justify;">
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis quos eligendi error expedita. Sunt,
@@ -165,11 +178,14 @@
                     tenetur voluptate dolor id nihil, ipsum sit magni excepturi laboriosam ea minima dolorem possimus repellat iure
                     totam?
                 </p>
-                <p class="no-select" style="text-align: right">SEÇMEK İÇİN TIKLA</p>
-            </button>
+                <div style="text-align: right;">
+                    <input type="button" value="SEÇMEK İÇİN BURAYA TIKLA" class="w3-button" id="faction1">
+                </div>
+            </div>
+
 
             <!-- Faction 3 -->
-            <button class="w3-container w3-content w3-black w3-padding-16 w3-hover-opacity">
+            <div class="w3-container w3-content w3-black w3-padding-16">
                 <h2 class="no-select">Faction 3</h2>
                 <p class="no-select" style="text-align: justify;">
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis quos eligendi error expedita. Sunt,
@@ -178,15 +194,17 @@
                     tenetur voluptate dolor id nihil, ipsum sit magni excepturi laboriosam ea minima dolorem possimus repellat iure
                     totam?
                 </p>
-                <p class="no-select" style="text-align: right">SEÇMEK İÇİN TIKLA</p>
-            </button>
+                <div style="text-align: right;">
+                    <input type="button" value="SEÇMEK İÇİN BURAYA TIKLA" class="w3-button" id="faction1">
+                </div>
+            </div>
+
         <!-- End of the factions section -->
         </div>
             
         <!-- Stats Section -->
             <!-- Stats description  -->
             <div class="w3-container w3-content w3-black w3-padding-16">
-                <br><br>
                 <h2 class="w3-wide w3-center">ÖZELLİKLER</h2>
                 <img class="no-select" src="./images/seperator.png" style="display:block; margin:0 auto; width:10%;">
                 <p class="no-select" style="text-align: center;">
@@ -203,12 +221,12 @@
             </div>
             <!-- End of the stats description -->
             <!-- Stats table -->
-            <div class="w3-container w3-content w3-black w3-padding-16">
+            <div class="no-select w3-container w3-content w3-black w3-padding-16">
                 <table style="width:100%">
                     <tr style="border: 1px solid #dedede;">
-                        <th><h2 class="no-select">Fiziksel</h2></th>
-                        <th><h2 class="no-select">Sosyal</h2></th>
-                        <th><h2 class="no-select">Mental</h2></th>
+                        <th><h2>Fiziksel</h2></th>
+                        <th><h2 >Sosyal</h2></th>
+                        <th><h2 >Mental</h2></th>
                     </tr>
                     <tr>
                         <th>s</th>
