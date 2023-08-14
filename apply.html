@@ -345,16 +345,12 @@
         function updateStats(button, increment) {
                 var statsContainer = button.parentElement;
                 var statsCircles = statsContainer.getElementsByClassName("stats-circle");
-                var selectedIndex = Array.prototype.indexOf.call(statsCircles, button.previousElementSibling);
+                var filledCircles = statsContainer.getElementsByClassName("stats-selected");
 
-                var selectedCircles = selectedIndex + increment;
-
-                for (var i = 0; i < statsCircles.length; i++) {
-                    if (i < selectedCircles) {
-                        statsCircles[i].classList.add("stats-selected");
-                    } else {
-                        statsCircles[i].classList.remove("stats-selected");
-                    }
+                if (increment === 1 && filledCircles.length < 4) {
+                    statsCircles[filledCircles.length].classList.add("stats-selected");
+                } else if (increment === -1 && filledCircles.length > 0) {
+                    filledCircles[filledCircles.length - 1].classList.remove("stats-selected");
                 }
             }
 
