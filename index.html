@@ -166,11 +166,13 @@
 
   <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
   <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
-    <a href="#aboutgame" class="w3-bar-item w3-button w3-padding-large" onclick="navbarFunctionality()">Oyun Hakkında</a>
+    <a href="#aboutgame" class="w3-bar-item w3-button w3-padding-large" onclick="navbarFunctionality()">Oyun
+      Hakkında</a>
     <a href="#city" class="w3-bar-item w3-button w3-padding-large" onclick="navbarFunctionality()">Şehir</a>
     <a href="#factions" class="w3-bar-item w3-button w3-padding-large" onclick="navbarFunctionality()">Fraksiyonlar</a>
     <a href="#" class="w3-bar-item w3-button w3-padding-large" onclick="navbarFunctionality()">Forum</a>
-    <a href="./apply.html" class="w3-bar-item w3-button w3-padding-large" onclick="navbarFunctionality()">Karakter Başvurusu</a>
+    <a href="./apply.html" class="w3-bar-item w3-button w3-padding-large" onclick="navbarFunctionality()">Karakter
+      Başvurusu</a>
     <a href="#" class="w3-bar-item w3-button w3-padding-large" onclick="navbarFunctionality()">Destek</a>
   </div>
 
@@ -467,26 +469,26 @@
       x[slideIndex - 1].style.display = "block";
     }
 
-  // Read more script
-  document.addEventListener("click", function (event) {
-    var toggleButton = event.target;
-    if (toggleButton.classList.contains("read-more-toggle")) {
-      var content = toggleButton.previousElementSibling; // Assuming the content is the previous element
-      var isExpanded = content.classList.contains("read-more-expanded");
+    // Read more script
+    document.addEventListener("click", function (event) {
+      var toggleButton = event.target;
+      if (toggleButton.classList.contains("read-more-toggle")) {
+        var content = toggleButton.previousElementSibling; // Assuming the content is the previous element
+        var isExpanded = content.classList.contains("read-more-expanded");
 
-      if (isExpanded) {
-        // Scroll to the top of the content
-        var contentTop = content.getBoundingClientRect().top + window.scrollY;
-        content.scroll({
-          top: 0,
-          behavior: "smooth" // You can change this to "auto" or remove it for instant scrolling
-        });
+        if (isExpanded) {
+          // Scroll to the top of the content
+          var contentTop = content.getBoundingClientRect().top + window.scrollY;
+          content.scroll({
+            top: 0,
+            behavior: "smooth" // You can change this to "auto" or remove it for instant scrolling
+          });
+        }
+
+        content.classList.toggle("read-more-expanded");
+        toggleButton.textContent = isExpanded ? "Daha fazlasını gör" : "Daha azını gör";
       }
-
-      content.classList.toggle("read-more-expanded");
-      toggleButton.textContent = isExpanded ? "Daha fazlasını gör" : "Daha azını gör";
-    }
-  });
+    });
 
   </script>
 
