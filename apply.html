@@ -19,7 +19,7 @@
             display: none
         }
 
-        .factionsSlide {
+        .statsSlide {
             display: none;
         }
 
@@ -90,6 +90,26 @@
         .read-more-expanded {
             max-height: 300px;
             overflow-y: scroll
+        }
+
+        /* Stat Circles */
+        .stats-container {
+            text-align: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .stats-circle {
+            width: 10px;
+            height: 10px;
+            border: 2px solid #800505;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 2px;
+        }
+
+        .stats-selected {
+            background-color: #800505;
         }
 
         /* -------------------------------------------LOW RESOLUTION------------------------------------------- */
@@ -218,6 +238,7 @@
                     <span style="color: #800505">••</span>
                     ).
                 </p>
+                <p style="text-align: center;">Kalan puan:</p>
             </div>
             <!-- End of the stats description -->
             <!-- Stats table -->
@@ -228,20 +249,131 @@
                         <th><h2 >Sosyal</h2></th>
                         <th><h2 >Mental</h2></th>
                     </tr>
+                    <!-- 1st Row -->
                     <tr>
-                        <th>s</th>
-                        <th>s</th>
-                        <th>s</th>
+                        <!-- Physical -->
+                        <th>
+                            <div class="stats-container">
+                                <p style="display: inline;margin: 0 2px;">asd:</p>
+                                
+                                <button class="w3-button">-</button>
+                                <div class="stats-circle"></div>
+                                <div class="stats-circle"></div>
+                                <div class="stats-circle"></div>
+                                <div class="stats-circle"></div>
+                                <button class="w3-button">+</button>
+                            </div>
+                        </th>
+                        <!-- Social -->
+                        <th>
+                            <div class="stats-container">
+                                <p style="display: inline;margin: 0 2px;">asd:</p>
+                            
+                                <button class="w3-button">-</button>
+                                <div class="stats-circle"></div>
+                                <div class="stats-circle"></div>
+                                <div class="stats-circle"></div>
+                                <div class="stats-circle"></div>
+                                <button class="w3-button">+</button>
+                            </div>
+                        </th>
+                        <!-- Mental -->
+                        <th>
+                            <div class="stats-container">
+                                <p style="display: inline;margin: 0 2px;">asd:</p>
+                            
+                                <button class="w3-button">-</button>
+                                <div class="stats-circle"></div>
+                                <div class="stats-circle"></div>
+                                <div class="stats-circle"></div>
+                                <div class="stats-circle"></div>
+                                <button class="w3-button">+</button>
+                            </div>
+                        </th>
                     </tr>
+                    <!-- 2nd Row -->
                     <tr>
-                        <th>s</th>
-                        <th>s</th>
-                        <th>s</th>
+                        <!-- Physical -->
+                        <th>
+                            <div class="stats-container">
+                                <p style="display: inline;margin: 0 2px;">asd:</p>
+                                
+                                <button class="w3-button">-</button>
+                                <div class="stats-circle"></div>
+                                <div class="stats-circle"></div>
+                                <div class="stats-circle"></div>
+                                <div class="stats-circle"></div>
+                                <button class="w3-button">+</button>
+                            </div>
+                        </th>
+                        <!-- Social -->
+                        <th>
+                            <div class="stats-container">
+                                <p style="display: inline;margin: 0 2px;">asd:</p>
+                            
+                                <button class="w3-button">-</button>
+                                <div class="stats-circle"></div>
+                                <div class="stats-circle"></div>
+                                <div class="stats-circle"></div>
+                                <div class="stats-circle"></div>
+                                <button class="w3-button">+</button>
+                            </div>
+                        </th>
+                        <!-- Mental -->
+                        <th>
+                            <div class="stats-container">
+                                <p style="display: inline;margin: 0 2px;">asd:</p>
+                            
+                                <button class="w3-button">-</button>
+                                <div class="stats-circle"></div>
+                                <div class="stats-circle"></div>
+                                <div class="stats-circle"></div>
+                                <div class="stats-circle"></div>
+                                <button class="w3-button">+</button>
+                            </div>
+                        </th>
                     </tr>
+                    <!-- 3rd row -->
                     <tr>
-                        <th>s</th>
-                        <th>s</th>
-                        <th>s</th>
+                        <!-- Physical -->
+                        <th>
+                            <div class="stats-container">
+                                <p style="display: inline;margin: 0 2px;">asd:</p>
+                    
+                                <button class="w3-button">-</button>
+                                <div class="stats-circle"></div>
+                                <div class="stats-circle"></div>
+                                <div class="stats-circle"></div>
+                                <div class="stats-circle"></div>
+                                <button class="w3-button">+</button>
+                            </div>
+                        </th>
+                        <!-- Social -->
+                        <th>
+                            <div class="stats-container">
+                                <p style="display: inline;margin: 0 2px;">asd:</p>
+                    
+                                <button class="w3-button">-</button>
+                                <div class="stats-circle"></div>
+                                <div class="stats-circle"></div>
+                                <div class="stats-circle"></div>
+                                <div class="stats-circle"></div>
+                                <button class="w3-button">+</button>
+                            </div>
+                        </th>
+                        <!-- Mental -->
+                        <th>
+                            <div class="stats-container">
+                                <p style="display: inline;margin: 0 2px;">asd:</p>
+                    
+                                <button class="w3-button">-</button>
+                                <div class="stats-circle"></div>
+                                <div class="stats-circle"></div>
+                                <div class="stats-circle"></div>
+                                <div class="stats-circle"></div>
+                                <button class="w3-button">+</button>
+                            </div>
+                        </th>
                     </tr>
                 </table>
             </div>
@@ -307,6 +439,9 @@
                 toggleButton.textContent = isExpanded ? "Daha fazlasını gör" : "Daha azını gör";
             }
         });
+
+        // Stats script
+        // will be added here
 
     </script>
 
