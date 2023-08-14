@@ -179,7 +179,10 @@
                     <span style="color: #800505">••</span>
                     ).
                 </p>
-                <p style="text-align: center;">Kalan puan:</p>
+                <p class="no-select w3-center">
+                    Kalan puan:
+                    <span id="pointsLeft" style="color: #800505;">4</span>
+                </p>
             </div>
             <!-- End of the stats description -->
             <!-- Stats table -->
@@ -342,27 +345,33 @@
 
 <script>
         // Stats script
+        var maxPoints = 4;
+        var currentPoints = maxPoints;
+
         function updateStats(button, increment) {
-                var statsContainer = button.parentElement;
-                var statsCircles = statsContainer.getElementsByClassName("stats-circle");
-                var filledCircles = statsContainer.getElementsByClassName("stats-selected");
+            var statsContainer = button.parentElement;
+            var statsCircles = statsContainer.getElementsByClassName("stats-circle");
+            var filledCircles = statsContainer.getElementsByClassName("stats-selected");
 
-                if (increment === 1 && filledCircles.length < 4) {
-                    statsCircles[filledCircles.length].classList.add("stats-selected");
-                } else if (increment === -1 && filledCircles.length > 1) {
-                    filledCircles[filledCircles.length - 1].classList.remove("stats-selected");
-                }
+            if (increment === 1 && currentPoints > 0 && filledCircles.length < 4) {
+                statsCircles[filledCircles.length].classList.add("stats-selected");
+                currentPoints--;
+            } else if (increment === -1 && filledCircles.length > 1) {
+                filledCircles[filledCircles.length - 1].classList.remove("stats-selected");
+                currentPoints++;
             }
 
-            var statButtons = document.getElementsByClassName("w3-button");
-            for (var i = 0; i < statButtons.length; i++) {
-                var button = statButtons[i];
-                button.addEventListener("click", function () {
-                    var increment = this.textContent === "+" ? 1 : -1;
-                    updateStats(this, increment);
-                });
-            }
-        
+            document.getElementById("pointsLeft").textContent = currentPoints;
+        }
+
+        var statButtons = document.getElementsByClassName("w3-button");
+        for (var i = 0; i < statButtons.length; i++) {
+            var button = statButtons[i];
+            button.addEventListener("click", function () {
+                var increment = this.textContent === "+" ? 1 : -1;
+                updateStats(this, increment);
+            });
+        } 
     </script>
 
 </body>
