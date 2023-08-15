@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Vampire: Destek</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+        body {
+            font-family: "Lato", sans-serif
+        }
+
+        /* Scrollbar */
+        /* width */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #dedede;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #f11;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #800505;
+        }
+
+        /* Change text selection colour */
+        ::selection {
+            background-color: #f11;
+            color: #0d0d0d;
+        }
+
+        /* Content selection can be disabled */
+        div.no-select,
+        img.no-select,
+        h2.no-select,
+        p.no-select {
+            user-select: none;
+        }
+
+        .w3-dropdown-hover:first-child,
+        .w3-dropdown-click:hover {
+            background-color: #fff;
+            color: #000
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="w3-top">
+        <div class="w3-bar w3-black w3-card">
+            <a href="./index.html" class="w3-bar-item w3-button w3-padding-large">ANA SAYFA</a>
+            <div id="navbarLogo" class="w3-bar-item w3-display-middle" style="text-align: center;">
+                <img class="no-select" src="./images/vampire_logo.png" width="30%" height="30%">
+                <!-- <img class="no-select" src="./images/navbar_logo.png" width="30" height="30"> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- The Page Content -->
+    <div class="w3-display-container w3-black">
+        <br><br>
+        <h2 class="w3-wide w3-center">DESTEK</h2>
+        <img class="no-select" src="./images/seperator.png" style="display:block; margin:0 auto; width:10%;">
+
+        <div class="no-select w3-container w3-content w3-padding-32">
+            <p style="display: inline; margin-right: 1%;">Kullanıcı adı:</p><input
+                class="w3-round-large textbox-background-color" type="text" style="margin-right: 5%;" id="userName">
+            <p style="display: inline; margin-right: 1%;">Forum adı:</p><input class="w3-round-large" type="text"
+                style="margin-right: 5%;" id="forumName">
+            <p style="display: inline; margin-right: 1%;">E-posta:</p><input class="w3-round-large" type="email"
+                style="margin-right: 5%;" id="charName">
+        </div>
+
+        <div class="w3-display-container w3-black w3-padding-32"
+            style="background-image: url(./images/factions_background.jpg);">
+            <!-- Form -->
+            <div class="w3-container w3-content w3-black w3-padding-32">
+                <p class="no-select" style="text-align: left">Destek türü: <span
+                        style="display: inline; margin-left: 1%;">
+                        <select class="w3-dropdown-hover w3-round-large" style="display: inline;" id="supportType">
+                            <div class="w3-dropdown-content w3-bar-block w3-border" style="background-color: #dedede;">
+                                <option value="request" class="w3-bar-item w3-button">İstek</a>
+                                <option value="suggestion" class="w3-bar-item w3-button">Öneri</a>
+                                <option value="complain" class="w3-bar-item w3-button">Şikayet</a>
+                                <option value="bug-report" class="w3-bar-item w3-button">Bug Bildirimi</a>
+                                <option value="other" class="w3-bar-item w3-button">Diğer</a>
+                            </div>
+                        </select>
+                    </span>
+                </p>
+
+                <p class="no-select">Açıklama: </p>
+                <textarea class="w3-round-large" style="width: 80%; height: 100%; border-radius: 5;"
+                    id="description"></textarea>
+
+                <p class="no-select">Ekler:</p>
+                <input type="file" class="w3-round-large" style="width: 80%; border: 1px solid #dedede;"
+                    id="attachments" name="attachments" multiple>
+            </div>
+
+            <!-- The submit button -->
+            <div class="w3-container w3-content w3-black w3-padding-16" style="text-align: right;">
+                <button class="w3-button">Gönder</button>
+            </div>
+            <!-- End of the Page Content -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-container w3-center w3-black w3-xlarge">
+        <i class="fab fa-facebook-official w3-hover-opacity"></i>
+        <i class="fab fa-instagram w3-hover-opacity"></i>
+        <i class="fab fa-snapchat w3-hover-opacity"></i>
+        <i class="fab fa-pinterest-p w3-hover-opacity"></i>
+        <i class="fab fa-twitter w3-hover-opacity"></i>
+        <i class="fab fa-linkedin w3-hover-opacity"></i>
+        <i class="fab fa-discord w3-hover-opacity"></i>
+        <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a>
+        </p>
+        <p class="w3-small w3-wide">© 2023 GOAT Team All Rights Reserved</p>
+    </footer>
+
+    <script>
+        // Stats script
+        var maxPoints = 4;
+        var currentPoints = maxPoints;
+
+        function updateStats(button, increment) {
+            var statsContainer = button.parentElement;
+            var statsCircles = statsContainer.getElementsByClassName("stats-circle");
+            var filledCircles = statsContainer.getElementsByClassName("stats-selected");
+
+            if (increment === 1 && currentPoints > 0 && filledCircles.length < 4) {
+                statsCircles[filledCircles.length].classList.add("stats-selected");
+                currentPoints--;
+            } else if (increment === -1 && filledCircles.length > 1) {
+                filledCircles[filledCircles.length - 1].classList.remove("stats-selected");
+                currentPoints++;
+            }
+
+            document.getElementById("pointsLeft").textContent = currentPoints;
+        }
+
+        var statButtons = document.getElementsByClassName("w3-button");
+        for (var i = 0; i < statButtons.length; i++) {
+            var button = statButtons[i];
+            button.addEventListener("click", function () {
+                var increment = this.textContent === "+" ? 1 : -1;
+                updateStats(this, increment);
+            });
+        } 
+    </script>
+
+</body>
+
+</html>
